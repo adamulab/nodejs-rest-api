@@ -9,6 +9,13 @@ const url = require("url");
 const StringDecoder = require("string_decoder").StringDecoder;
 const config = require("./config");
 const fs = require("fs");
+const _data = require("./lib/data");
+
+// Test
+// @TODO delete this
+_data.delete("test", "newFiie", function (err) {
+  console.log("this was the error: ", err);
+});
 
 // Instantiating the HTTPServer
 const httpServer = http.createServer(function (req, res) {
@@ -99,10 +106,9 @@ const unifiedServer = function (req, res) {
 // Define the handlers
 const handlers = {};
 
-// Sample handler
-handlers.sample = function (data, callback) {
-  // Callback a http status code, and a payload object
-  callback(406, { name: "sample handler" });
+// ping handler
+handlers.ping = function (data, callback) {
+  callback(200);
 };
 
 // Not found handler
@@ -112,5 +118,5 @@ handlers.notFound = function (data, callback) {
 
 // Define a request router
 const router = {
-  sample: handlers.sample,
+  ping: handlers.ping,
 };
