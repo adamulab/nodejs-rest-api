@@ -9,13 +9,6 @@ const url = require("url");
 const StringDecoder = require("string_decoder").StringDecoder;
 const config = require("./config");
 const fs = require("fs");
-const _data = require("./lib/data");
-
-// Test
-// @TODO delete this
-_data.delete("test", "newFiie", function (err) {
-  console.log("this was the error: ", err);
-});
 
 // Instantiating the HTTPServer
 const httpServer = http.createServer(function (req, res) {
